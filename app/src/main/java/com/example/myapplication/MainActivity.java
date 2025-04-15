@@ -14,12 +14,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        // Crear una nueva instancia del Fragment
-        FragmentEjemploActivity ejemploFragment = new FragmentEjemploActivity();
+        // Agregar el primer Fragment
+        FragmentEjemploActivity primerFragment = new FragmentEjemploActivity();
+        FragmentTransaction transaction1 = fragmentManager.beginTransaction();
+        transaction1.add(R.id.contenedor_fragment_uno, primerFragment);
+        transaction1.commit();
 
-        // Comenzar una transacción para agregar el Fragment al contenedor
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.contenedor_fragment, ejemploFragment);
-        transaction.commit(); // O transaction.commitNow() para ejecutar la transacción inmediatamente
+        // Agregar el segundo Fragment
+        SegundoFragment segundoFragment = SegundoFragment.newInstance("¡Hola Alisonnn 💋!");
+        FragmentTransaction transaction2 = fragmentManager.beginTransaction();
+        transaction2.add(R.id.contenedor_fragment_dos, segundoFragment);
+        transaction2.commit();
     }
 }
